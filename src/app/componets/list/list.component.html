@@ -1,0 +1,18 @@
+<div class="container mt-2 w-75">
+  <div class="container marketing">
+    <div class="row " *ngIf="arrCita.length > 0" >
+      <div class="col-lg-4 mt-5 text-center" *ngFor="let cita of arrCita">
+        <img class="mb-4 rounded-circle" [src]="imgAvatar" alt="" width="200" height="200">
+        <h2>{{cita.titulo}}</h2>
+        <div class="container " [ngStyle]="{'background-color':[cita.color]}">
+        <p>{{cita.descripcion}}</p>
+        <p>{{cita.entrada|date:"dd-MM-YY HH:mm"}}</p>
+        <p>{{cita.salida|date:"dd-MM-YY HH:mm"}}</p>
+        </div>
+        <button class="btn btn-warning me-2"  [routerLink]="['/editar-cita',cita._id]" >Editar</button>
+        <button class="btn btn-danger" (click)="elimimnarCita(cita._id)" >Borrar</button>
+      </div>
+    </div>
+  </div>
+  <h3 class="text-danger text-center" *ngIf="arrCita.length == 0" >no hay citas disponibles </h3>
+</div>
